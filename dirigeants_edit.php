@@ -10,10 +10,26 @@ $titrepage="Edition d'un dirigeant";
 include ('parties/header.php');
 
 // var_dump($_POST);
+$afficherFormulaire = false;
+
+if (isset($_POST['id']) && !empty($_POST['id'])) {
+  // On traite le formulaire
+  $testduformulaire=(['nom','prenom','email','tel','id_adresse']);
+  if($testduformulaire===false){
+    echo "Le Formulaire est incomplet";;
+  } elseif ($testduformulaire === true) {
+    $sql ="UPDATE dirigeants SET
+          nom = '".mysqli_real_escape_string($_POST['nom'])."',
+          prenom = '".mysqli_real_escape_string($_POST['prenom'])."',
+          email = '".mysqli_real_escape_string($_POST['email'])."',
+          tel = '".mysqli_real_escape_string($_POST['tel'])."',
+          WHERE id=" .mysqli_real_escape_string($_POST['id_adresse']);
+  }
+}
 
 // Est ce qu'on a un id passé dans la query string ?
 // On met a false par défault et on ne changera que si c'st bon
-if (isset($_GET['id']) && !empty($_GET['id'])) {
+elseif (isset($_GET['id']) && !empty($_GET['id'])) {
   // Requete pour selectionner le dirigeant
   $sql="SELECT * FROM dirigeants WHERE id="
     .mysqli_real_escape_string($connection, $_GET['id']);
@@ -23,6 +39,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
   } else {
     if (mysqli_num_rows($resultats)) {
       $dirigeant =mysqli_fetch_assoc($resultats);
+      $afficherFormulaire=true;
       var_dump($dirigeant);
     } else {
       echo "Ce dirigeant n'existe pas.";
@@ -73,10 +90,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 //   else:
 //
 //
-//
+if ($afficherFormulaire === true) :
 ?>
 <a href="dirigeant.php">Retour à la liste </a>
-<form action="dirigeants_new.php" method="post">
+<form action="dirigeants_edit.php" method="post">
   <div class="form-group">
     <label for="nom">Nom</label>
     <input value="<?=$dirigeant['nom']?>" required name="nom" type="text" id="nom" placeholder="Nom" class="form-control">
@@ -114,7 +131,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 </form>
 
 <?php
-//   endif;
+   endif;
 // endif;
 include ("parties/footer.php");
  ?>
