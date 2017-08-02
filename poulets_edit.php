@@ -4,7 +4,7 @@ require_once('includes/db.php');
 require_once('includes/fonction.php');
 
 // Définition titre page
-$titrepage="Edition d'un dirigeant";
+$titrepage="Edition d'un poulet";
 
 // Headers html; <head> + titres
 include ('parties/header.php');
@@ -14,16 +14,14 @@ $afficherFormulaire = false;
 
 if (isset($_POST['id']) && !empty($_POST['id'])) {
   // On traite le formulaire
-  $testduformulaire=(['nom','prenom','id_adresse','id_ferme']);
+  $testduformulaire=(['id','race','id_ferme']);
   if($testduformulaire===false){
     echo "Le Formulaire est incomplet";;
   } elseif ($testduformulaire === true) {
     $sql ="UPDATE dirigeants SET
-            '" . mysqli_real_escape_string($connection, $_POST['nom']) . "',
-            '" . mysqli_real_escape_string($connection, $_POST['prenom']) . "')
-            '" . mysqli_real_escape_string($connection, $_POST['id_adresse']) . "')
-            '" . mysqli_real_escape_string($connection, $_POST['id_ferme']) . "')
-              WHERE id=" .mysqli_real_escape_string($_POST['id_adresse']);
+            '" . mysqli_real_escape_string($connection, $_POST['id']) . "',
+            '" . mysqli_real_escape_string($connection, $_POST['race']) . "')
+              WHERE id=" .mysqli_real_escape_string($_POST['id_ferme']);
   }
 }
 
@@ -95,21 +93,14 @@ if ($afficherFormulaire === true) :
 <a href="dirigeant.php">Retour à la liste </a>
 <form action="dirigeants_edit.php" method="post">
   <div class="form-group">
-    <label for="nom">Nom</label>
-    <input value="<?=$dirigeant['nom']?>" required name="nom" type="text" id="nom" placeholder="Nom" class="form-control">
+    <label for="nom">ID</label>
+    <input value="<?=$dirigeant['id']?>" required name="nom" type="text" id="nom" placeholder="Nom" class="form-control">
   </div>
   <div class="form-group">
-    <label for="prenom">Prénom</label>
-    <input value="<?=$dirigeant['prenom']?>" required name="prenom" type="text" id="nom" placeholder="Prénom" class="form-control">
+    <label for="prenom">Race</label>
+    <input value="<?=$dirigeant['race']?>" required name="Id-ferme" type="text" id="nom" placeholder="Prénom" class="form-control">
   </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input value="<?=$dirigeant['email']?>" required name="email" type="text" id="email" placeholder="Email" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="tel">Téléphone</label>
-    <input value="<?=$dirigeant['tel']?>" required name="tel" type="text" id="tel" placeholder="Téléphone" class="form-control">
-  </div>
+
 
 <!--Menu déroulant-->
   <div class="form-group">
@@ -118,9 +109,9 @@ if ($afficherFormulaire === true) :
       <?php
         while ($ligne = mysqli_fetch_assoc($adresses)) :
           echo '<option value="'.$ligne['id'].'">'
-          . $ligne['nom'] . ' '
-          . $ligne['cp'] . ' '
-          . $ligne['ville'] . ' '
+          . $ligne['id'] . ' '
+          . $ligne['race'] . ' '
+          . $ligne['id_ferme'] . ' '
           .'</option>';
         endwhile;
        ?>

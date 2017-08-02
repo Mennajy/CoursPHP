@@ -49,3 +49,7 @@ function verificationformulaire ($champs){
 }
 return null;
 }
+
+function alert($type, $message){
+  echo "<div class=\"alert alert-$type\">$message</div>";
+}

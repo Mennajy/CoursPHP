@@ -7,7 +7,7 @@ require_once('includes/fonction.php');
 $titrepage="Liste des dirigeants";
 // Headers html; <head> + titres
 include ('parties/header.php');
-$champsTriables= ['id', 'nom', 'prenom', 'mail', 'tel', 'id_adresse','nb_fermes'];
+$champsTriables= ['id', 'nom', 'prenom', 'mail', 'tel', 'id_adresse','nb_fermes','mdp'];
 
 $ordreDeTri = testOrderBy($champsTriables, 'nom', 'ASC');
 $ordreChamp = $ordreDeTri[0];
@@ -16,7 +16,7 @@ $ordreDirection = $ordreDeTri[1];
 // $sql = "SELECT * FROM dirigeants ORDER BY $ordreChamp $ordreDirection";
 
 
-$sql = "SELECT d.id, d.nom, d.prenom, d.id_adresse, d.tel, d.email, count(f.id) nb_fermes
+$sql = "SELECT d.id, d.nom, d.prenom, d.id_adresse, d.tel, d.email, d.mdp, count(f.id) nb_fermes
         FROM dirigeants d
         LEFT JOIN fermes f ON d.id=f.id_dirigeant
         GROUP BY d.id
@@ -66,6 +66,10 @@ $sql = "SELECT d.id, d.nom, d.prenom, d.id_adresse, d.tel, d.email, count(f.id) 
          <a href="dirigeants.php?order=&amp;direction=ASC">+</a>
          <a href="dirigeants.php?order=&amp;direction=DESC">-</a>
        </th>
+       <th>mdp
+         <a href="dirigeants.php?order=&amp;direction=ASC">+</a>
+         <a href="dirigeants.php?order=&amp;direction=DESC">-</a>
+       </th>
      </tr>
    </thead>
    <tbody>
@@ -98,6 +102,7 @@ $sql = "SELECT d.id, d.nom, d.prenom, d.id_adresse, d.tel, d.email, count(f.id) 
   <td><?= $ligne['tel'] ?></td>
   <td><?= $ligne['id_adresse'] ?></td>
   <td><?= $ligne['nb_fermes'] ?></td>
+  <td><?= $ligne['mdp'] ?></td>
 </tr>
 
 <?php

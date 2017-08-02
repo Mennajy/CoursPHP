@@ -4,7 +4,7 @@ require_once('includes/db.php');
 require_once('includes/fonction.php');
 
 // Définition titre page
-$titrepage="Edition d'un dirigeant";
+$titrepage="Edition d'un employé";
 
 // Headers html; <head> + titres
 include ('parties/header.php');
@@ -92,8 +92,8 @@ elseif (isset($_GET['id']) && !empty($_GET['id'])) {
 //
 if ($afficherFormulaire === true) :
 ?>
-<a href="dirigeant.php">Retour à la liste </a>
-<form action="dirigeants_edit.php" method="post">
+<a href="employes.php">Retour à la liste </a>
+<form action="employes_edit.php" method="post">
   <div class="form-group">
     <label for="nom">Nom</label>
     <input value="<?=$dirigeant['nom']?>" required name="nom" type="text" id="nom" placeholder="Nom" class="form-control">
@@ -104,11 +104,11 @@ if ($afficherFormulaire === true) :
   </div>
   <div class="form-group">
     <label for="email">id_adresse</label>
-    <input value="<?=$dirigeant['email']?>" required name="email" type="text" id="email" placeholder="Email" class="form-control">
+    <input value="<?=$dirigeant['id_adresse']?>" required name="email" type="text" id="email" placeholder="Email" class="form-control">
   </div>
   <div class="form-group">
     <label for="tel">id_ferme</label>
-    <input value="<?=$dirigeant['tel']?>" required name="tel" type="text" id="tel" placeholder="Téléphone" class="form-control">
+    <input value="<?=$dirigeant['id_ferme']?>" required name="tel" type="text" id="tel" placeholder="Téléphone" class="form-control">
   </div>
 
 <!--Menu déroulant-->

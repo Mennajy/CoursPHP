@@ -24,6 +24,13 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
           email = '".mysqli_real_escape_string($_POST['email'])."',
           tel = '".mysqli_real_escape_string($_POST['tel'])."',
           WHERE id=" .mysqli_real_escape_string($_POST['id_adresse']);
+a
+      if(!mysql_queery($sql)){
+        echo "Erreur :" .mysqli_error($connection);
+      } else {
+        echo "L'enregistrement a été mis à jour."
+        ."<br><a href=\"dirigeants.php\"> Retours a la liste </a>";
+      }
   }
 }
 
