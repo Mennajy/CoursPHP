@@ -24,7 +24,7 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
           email = '".mysqli_real_escape_string($_POST['email'])."',
           tel = '".mysqli_real_escape_string($_POST['tel'])."',
           WHERE id=" .mysqli_real_escape_string($_POST['id_adresse']);
-a
+
       if(!mysql_queery($sql)){
         echo "Erreur :" .mysqli_error($connection);
       } else {
@@ -55,7 +55,33 @@ elseif (isset($_GET['id']) && !empty($_GET['id'])) {
 } else {
   echo "Pas d'id";
 }
-
+$testduformulaire = verificationformulaire(
+    ['mdp3', 'mdp', 'mdp2']
+  );
+  if($testduformulaire === true){
+    // Vérification de l'ancien mot de passe
+    $sql = "SELECT id FROM dirigeants WHERE id="
+          .mysqli_real_escape_string($connection, $_POST['id'])
+          ." AND mdp='"
+          .mysqli_real_escape_string($connection, md5($_POST['mdp3']))
+          ."'";
+    $resultats = executerRequete($connection, $sql);
+    if($resultats !== false && mysqli_num_rows($resultats) === 1){
+      // on continue
+      if($_POST['mdp'] === $_POST['mdp2']){
+        $sql = "UPDATE dirigeants SET mdp='"
+              .mysqli_real_escape_string($connection, md5($_POST['mdp']))
+              ."'";
+        if(executerRequete($connection, $sql) !== false){
+          alert('success', 'Mot de passe mis à jour');
+        }
+      } else {
+        alert('danger', 'Les mots de passe ne correspondent pas.');
+      }
+    }else{
+      alert('danger', 'Mot de passe actuel incorrect');
+    }
+  }
 // $testduformulaire=verificationformulaire (['nom', 'prenom', 'email', 'tel', 'id_adresse']);
 // if ($testduformulaire === false) {
 //   echo "C'est faux";
@@ -116,6 +142,18 @@ if ($afficherFormulaire === true) :
   <div class="form-group">
     <label for="tel">Téléphone</label>
     <input value="<?=$dirigeant['tel']?>" required name="tel" type="text" id="tel" placeholder="Téléphone" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="mdp2">Ancien Mot de passe</label>
+    <input required name="mdp3" type="password" class="form-control" id="mdp3" placeholder="Ancien du mot de passe">
+  </div>
+  <div class="form-group">
+    <label for="mdp">Mot de passe</label>
+    <input required name="mdp" type="password" class="form-control" id="mdp" placeholder="Mot de passe">
+  </div>
+  <div class="form-group">
+    <label for="mdp2">Confirmation</label>
+    <input required name="mdp2" type="password" class="form-control" id="mdp2" placeholder="Confirmation du mot de passe">
   </div>
 
 <!--Menu déroulant-->

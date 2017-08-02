@@ -33,7 +33,7 @@ function tableheaders ($liste){
 }
 
 // [champ1, champ2...]
-function verificationformulaire ($champs){
+function verificationformulaire($champs){
   if (count($_POST)>0){
   for($i=0; $i<count($champs); $i++){
     if(
@@ -52,4 +52,19 @@ return null;
 
 function alert($type, $message){
   echo "<div class=\"alert alert-$type\">$message</div>";
+}
+
+function executerRequete($connection, $requeteSql)
+{
+  if (!$resultats = mysqli_query($connection, $requeteSql)) {
+    alert('danger', 'Erreur SQL: </br>'. mysqli_error($connection));
+    return false;
+  }
+  return $resultats;
+}
+
+function utilisateurEstIdentifie(){
+  return isset($_SESSION)
+         && isset($_SESSION['utilisateur'])
+         && isset($_SESSION['utilisateur']['id']);
 }

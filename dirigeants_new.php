@@ -12,12 +12,12 @@ include('parties/header.php');
 var_dump($_POST);
 
 $testDuFormulaire = verificationformulaire(['nom',
-                                        'prenom',
-                                        'email',
-                                        'tel',
-                                        'id_adresse',
-                                        'mdp',
-                                        'mdp2']);
+                                            'prenom',
+                                            'email',
+                                            'tel',
+                                            'id_adresse',
+                                            'mdp',
+                                            'mdp2']);
 if($testDuFormulaire === false){
   echo "C'est faux";
 } elseif($testDuFormulaire === true) {
