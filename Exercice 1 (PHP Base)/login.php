@@ -2,8 +2,13 @@
 // Connexion à la base de données
 require_once('includes/db.php');
 require_once('includes/fonction.php');
-// Définition titre page
+// Définition titre pag
 $titrepage="Login";
+
+// Headers html; <head> + titres
+include ('parties/header.php');
+
+
 $erreur=false;
 $succes=false;
 if (verificationformulaire(['email','password']) ===true) {
@@ -22,9 +27,6 @@ if (verificationformulaire(['email','password']) ===true) {
       $erreur=true;
       }
 }
-// Headers html; <head> + titres
-include ('parties/header.php');
-
 
 if($erreur === true){
   alert('danger', 'Identifiants invalides');

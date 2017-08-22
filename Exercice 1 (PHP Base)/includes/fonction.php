@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function testOrderBy($listeDeChamps, $champParDefaut, $directionParDefaut){
   if(isset($_GET['order'])){
     if(in_array($_GET['order'], $listeDeChamps)){
@@ -57,7 +57,7 @@ function alert($type, $message){
 function executerRequete($connection, $requeteSql)
 {
   if (!$resultats = mysqli_query($connection, $requeteSql)) {
-    alert('danger', 'Erreur SQL: </br>'. mysqli_error($connection));
+    alert('danger', 'Erreur SQL: </br>'. mysqli_error($connection) . "<pre>$requeteSql</pre>");
     return false;
   }
   return $resultats;
@@ -67,4 +67,12 @@ function utilisateurEstIdentifie(){
   return isset($_SESSION)
          && isset($_SESSION['utilisateur'])
          && isset($_SESSION['utilisateur']['id']);
+}
+function userInfo($champ){
+  if(isset($_SESSION)
+         && isset($_SESSION['utilisateur'])
+         && isset($_SESSION['utilisateur'][$champ])){
+    return $_SESSION['utilisateur'][$champ];
+  }
+  return null;
 }
