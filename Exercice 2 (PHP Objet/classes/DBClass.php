@@ -1,23 +1,31 @@
 <?php
+
+/**
+ * Class DBClass
+ *
+ * Classe permettant de se connecter à la BDD et de gérer la
+ * connexion
+ */
+class DBClass
+{
     /**
-    * Class DBclass
-    * Connexion
-    **/
+     * @var Objet représentant la connexion
+     */
+    public static $connection = null;
 
-class DBclass{
-  /**
-  * var Object représenant la connexion
-  */
-  public static function connect(){
     /**
-    * Connexion a la base de données
-    */
-  }
+     * Connexion à la base de données
+     */
+    public static function connect()
+    {
 
-  /**
-  * Déconnexion a la base de données
-  */
-  public static function disconnect(){
+    }
 
-  }
-} ?>
+    /**
+     * Déconnexion de la base
+     */
+    public static function disconnect()
+    {
+
+    }
+}

@@ -1,42 +1,58 @@
 <?php
+
 /**
-* Classe de Controlleur générique
-*/
+ * Class DefaultControllerClass
+ *
+ * Classe de controlleur générique
+ */
 class DefaultControllerClass{
-  /**
-  * DefautControllerClass Constructor
-  */
-  public function __contruct(){
-  }
-  /**
-  * Index : Liste les enregistrements
-  */
-  public function index(){
 
-  }
-  /**
-  * Affichaage d'un élément unique
-  */
-  public function view($id){
+    /**
+     * DefaultControllerClass constructor.
+     */
+    public function __construct(){
 
-  }
-  /**
-  * Ajout d'un élément
-  */
-  public function add(){
+    }
 
-  }
-  /**
-  * Parametre int $int Edition d'un élément
-  */
-  public function edit($id){
+    /**
+     * Index : liste des enregistrements
+     */
+    public function index(){
 
-  }
-  public function delete($id){
+    }
 
-  }
+    /**
+     * Affichage d'un élément unique
+     *
+     * @param int $id Id de l'élément à afficher
+     */
+    public function view($id){
+
+    }
+
+    /**
+     * Ajout d'un élément
+     */
+    public function add(){
+
+    }
+
+    /**
+     * Edition d'un élément
+     *
+     * @param int $id Id de l'élément à modifier
+     */
+    public function edit($id){
+
+    }
+
+    /**
+     * Suppression d'un élément
+     *
+     * @param int $id Id de l'élément à supprimer
+     */
+    public function delete($id){
+
+    }
+
 }
-
-
-
- ?>
