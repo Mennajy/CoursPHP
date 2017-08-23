@@ -9,7 +9,7 @@
 class DBClass
 {
     /**
-     * @var Objet représentant la connexion
+     * @var mysqli Objet représentant la connexion
      */
     public static $connection = null;
 
@@ -18,6 +18,19 @@ class DBClass
      */
     public static function connect()
     {
+        // Configuration
+        $server = '127.0.0.1';
+        $username = 'root';
+        $password = '';
+        $db = 'vagrant';
+
+        // Connexion
+        self::$connection = mysqli_connect($server, $username, $password, $db);
+
+        // Test de la connexion
+        if (!self::$connection) {
+            die('Erreur : impossible de se connecter à la base de données.<pre>' . mysqli_connect_error() . '</pre>');
+        }
 
     }
 

@@ -5,16 +5,21 @@
 require_once 'includes.php';
 
 /*
+ * Connexion à la base de données
+ */
+DBClass::connect();
+
+/*
  * Valeurs par défaut
  */
-$controleur = 'pages';
+$controller = 'pages';
 $action = 'home';
 
 /*
- * Choix du controleur
+ * Choix du controleur suivant la valeur 'c' de la querystring
  */
 if (isset($_GET['c']) && !empty($_GET['c'])) {
-    $controleur = $_GET['c'];
+    $controller = $_GET['c'];
 }
 /*
  * Choix de l'action
@@ -23,36 +28,37 @@ if (isset($_GET['a']) && !empty($_GET['a'])) {
     $action = $_GET['a'];
 }
 
-//echo "Controleur : $controleur, Action : $action";
-
 /*
  * Détermination du "nom" du controleur que l'on veut charger:
  */
-$nomControleur = ucfirst($controleur) . 'Controller';
-$fichierControleur = 'controllers/' . $nomControleur . '.php';
-//echo "<p>On veut charger $nomControleur</p>";
+$controllerName = ucfirst($controller) . 'Controller';
+$controllerFile = 'controllers/' . $controllerName . '.php';
 
 /*
- * Tentative de chargement du controlleur
+ * Tentative de chargement du controlleur:
+ * Test de l'existence du fichier
  */
-if (file_exists($fichierControleur)) {
-    require_once($fichierControleur);
+if (file_exists($controllerFile)) {
+    require_once($controllerFile);
 
-    $controleurFinal = new $nomControleur();
+    // Création d'une instance de ce controleur
+    $finalController = new $controllerName();
 
-    if (method_exists($controleurFinal, $action) && !in_array($action,$controleurFinal->actionsBlacklist)){
-//        echo "Super, la méthode existe.";
-
-        $resultats = $controleurFinal->$action();
-
+    // Test de l'existence de la méthode (action) dans le controlleur.
+    // La méthode ne doit pas être blacklistée.
+    if (method_exists($finalController, $action)
+        && !in_array($action, $finalController->actionsBlacklist)
+    ) {
+        $resultats = $finalController->$action();
         /*
-         * On charge la page de vue:
+         * On prépare la vue
          */
         $fichierVue = 'views/'
-            . $controleur
+            . $controller
             . '/'
             . $action . '.php';
 
+        // Si la vue existe, on continue
         if (file_exists($fichierVue)) {
             /*
              * On affiche l'ensemble
@@ -65,26 +71,13 @@ if (file_exists($fichierControleur)) {
         }
     } else {
         die('404 - Action introuvable ('
-            . $nomControleur
+            . $controllerName
             . '::'
             . $action . ')');
     }
 
 } else {
     die('404 - Controleur introuvable ('
-        . $fichierControleur
+        . $controllerFile
         . ')');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//

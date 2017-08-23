@@ -2,15 +2,24 @@
 
 require_once 'DefaultControllerClass.php';
 
+/**
+ * Class PagesController
+ *
+ * Pages "statiques"
+ */
 class PagesController extends DefaultControllerClass
 {
-  public $actionsBlacklist=[
-    'index',
-    'view',
-    'delete',
-    'edit',
-    'add',
-  ];
+    /**
+     * @var array Liste des actions interdites
+     */
+    public $actionsBlacklist = [
+        'index',
+        'view',
+        'delete',
+        'edit',
+        'add'
+    ];
+
     /**
      * Affichage page d'accueil
      */
@@ -22,7 +31,8 @@ class PagesController extends DefaultControllerClass
     /**
      * Page "A propos"
      */
-    public function about(){
+    public function about()
+    {
 
     }
 

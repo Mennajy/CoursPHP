@@ -6,5 +6,5 @@ require_once 'classes/DBClass.php';
 require_once 'controllers/DefaultControllerClass.php';
 // Modèle par défaut (parent)
 require_once 'models/DefaultModelClass.php';
-
-require_once 'classes/htmlhelper.php';
+// Aides pour le HTML
+require_once 'classes/HtmlHelper.php';
