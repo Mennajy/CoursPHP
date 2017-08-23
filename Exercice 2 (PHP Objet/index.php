@@ -40,7 +40,7 @@ if (file_exists($fichierControleur)) {
 
     $controleurFinal = new $nomControleur();
 
-    if (method_exists($controleurFinal, $action)) {
+    if (method_exists($controleurFinal, $action) && !in_array($action,$controleurFinal->actionsBlacklist)){
 //        echo "Super, la méthode existe.";
 
         $resultats = $controleurFinal->$action();

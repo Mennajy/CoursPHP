@@ -7,6 +7,10 @@
  */
 class DefaultControllerClass{
 
+    /*
+    * Var array Liste des actions interdites
+    */
+    public $actionsBlacklist=[];
     /**
      * DefaultControllerClass constructor.
      */
@@ -24,9 +28,9 @@ class DefaultControllerClass{
     /**
      * Affichage d'un élément unique
      *
-     * @param int $id Id de l'élément à afficher
+     * param int $id Id de l'élément à afficher
      */
-    public function view($id){
+    public function view(){
 
     }
 
@@ -40,18 +44,18 @@ class DefaultControllerClass{
     /**
      * Edition d'un élément
      *
-     * @param int $id Id de l'élément à modifier
+     * param int $id Id de l'élément à modifier
      */
-    public function edit($id){
+    public function edit(){
 
     }
 
     /**
      * Suppression d'un élément
      *
-     * @param int $id Id de l'élément à supprimer
+     * param int $id Id de l'élément à supprimer
      */
-    public function delete($id){
+    public function delete(){
 
     }
 
