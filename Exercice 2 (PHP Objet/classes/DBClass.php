@@ -24,12 +24,28 @@ class DBClass
         $password = '';
         $db = 'vagrant';
 
-        // Connexion
-        self::$connection = mysqli_connect($server, $username, $password, $db);
-
-        // Test de la connexion
-        if (!self::$connection) {
-            die('Erreur : impossible de se connecter à la base de données.<pre>' . mysqli_connect_error() . '</pre>');
+        // Essai de connexion
+        try {
+            // Création de la connexion
+            self::$connection = new PDO(
+                'mysql:host=' . $server . ';dbname=' . $db,
+                $username,
+                $password
+            );
+            // Changement des paramètres de PDO:
+            //  - gestion des erreurs
+            self::$connection->setAttribute(
+                PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION
+            );
+            //  - Mode de retrait
+            self::$connection->setAttribute(
+                PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ
+            );
+        } catch (PDOException $error) {
+            die('Erreur : impossible de se connecter à'
+                . ' la base de données.<pre>'
+                . $error->getMessage()
+                . '</pre>');
         }
 
     }

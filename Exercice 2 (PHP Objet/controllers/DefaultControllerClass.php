@@ -32,7 +32,8 @@ class DefaultControllerClass
     {
         if ($this->modelName !== null) {
             $model = $this->loadModel($this->modelName);
-            return ($model->findAll());
+
+            return $model->findAll();
         } else {
             die('Ce controleur n\'est pas associé à une table');
         }
@@ -53,7 +54,17 @@ class DefaultControllerClass
      */
     public function add()
     {
+        if ($this->modelName !== null) {
+            $model = $this->loadModel($this->modelName);
 
+            if (count($_POST) > 0) {
+                if($model->save($_POST)){
+                    return ['ok' => true];
+                }
+            }
+        } else {
+            die('Ce controleur n\'est pas associé à une table');
+        }
     }
 
     /**

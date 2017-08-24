@@ -1,0 +1,1 @@
+<h1>Affichage d'une ferme</h1>

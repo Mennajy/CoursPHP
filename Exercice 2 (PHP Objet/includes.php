@@ -8,3 +8,7 @@ require_once 'controllers/DefaultControllerClass.php';
 require_once 'models/DefaultModelClass.php';
 // Aides pour le HTML
 require_once 'classes/HtmlHelper.php';
+// Entité par défaut (parent)
+require_once 'entities/DefaultEntityClass.php';
+// Chargement des fichiers d'uatoload pour le psr 4
+require 'vendor/autoload.php';

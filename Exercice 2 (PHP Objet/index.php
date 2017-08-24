@@ -50,6 +50,7 @@ if (file_exists($controllerFile)) {
         && !in_array($action, $finalController->actionsBlacklist)
     ) {
         $resultats = $finalController->$action();
+
         /*
          * On prépare la vue
          */
