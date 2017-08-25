@@ -1,5 +1,9 @@
 <?php
 
+namespace Studio321\Classes;
+
+use PDO;
+
 /**
  * Class DBClass
  *

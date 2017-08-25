@@ -4,27 +4,34 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit791f96a2e5e91d36228865c412de14f0
+class ComposerStaticInitfa8faa6629e0625b90b2fe5cded80893
 {
-    public static $prefixLengthsPsr4 = array (
-        'F' => 
-        array (
-            'Faker\\' => 6,
-        ),
-    );
-
-    public static $prefixDirsPsr4 = array (
-        'Faker\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
-        ),
+    public static $classMap = array (
+        'Studio321\\Classes\\DBClass' => __DIR__ . '/../..' . '/classes/DBClass.php',
+        'Studio321\\Classes\\HtmlHelper' => __DIR__ . '/../..' . '/classes/HtmlHelper.php',
+        'Studio321\\Controller\\AddressesController' => __DIR__ . '/../..' . '/controllers/AddressesController.php',
+        'Studio321\\Controller\\ChickensController' => __DIR__ . '/../..' . '/controllers/ChickensController.php',
+        'Studio321\\Controller\\DefaultControllerClass' => __DIR__ . '/../..' . '/controllers/DefaultControllerClass.php',
+        'Studio321\\Controller\\EmployeesController' => __DIR__ . '/../..' . '/controllers/EmployeesController.php',
+        'Studio321\\Controller\\FarmsController' => __DIR__ . '/../..' . '/controllers/FarmsController.php',
+        'Studio321\\Controller\\LeadersController' => __DIR__ . '/../..' . '/controllers/LeadersController.php',
+        'Studio321\\Controller\\PagesController' => __DIR__ . '/../..' . '/controllers/PagesController.php',
+        'Studio321\\Entity\\AddressEntity' => __DIR__ . '/../..' . '/entities/AddressEntity.php',
+        'Studio321\\Entity\\DefaultEntityClass' => __DIR__ . '/../..' . '/entities/DefaultEntityClass.php',
+        'Studio321\\Entity\\DirigeantEntity' => __DIR__ . '/../..' . '/entities/DirigeantEntity.php',
+        'Studio321\\Entity\\employesEntity' => __DIR__ . '/../..' . '/entities/employeEntity.php',
+        'Studio321\\Model\\AddressesModel' => __DIR__ . '/../..' . '/models/AddressesModel.php',
+        'Studio321\\Model\\ChickensModel' => __DIR__ . '/../..' . '/models/ChickensModel.php',
+        'Studio321\\Model\\DefaultModelClass' => __DIR__ . '/../..' . '/models/DefaultModelClass.php',
+        'Studio321\\Model\\EmployeesModel' => __DIR__ . '/../..' . '/models/EmployesModel.php',
+        'Studio321\\Model\\FarmsModel' => __DIR__ . '/../..' . '/models/FarmsModel.php',
+        'Studio321\\Model\\LeadersModel' => __DIR__ . '/../..' . '/models/LeadersModel.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit791f96a2e5e91d36228865c412de14f0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit791f96a2e5e91d36228865c412de14f0::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitfa8faa6629e0625b90b2fe5cded80893::$classMap;
 
         }, null, ClassLoader::class);
     }

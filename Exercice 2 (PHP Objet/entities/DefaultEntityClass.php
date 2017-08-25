@@ -1,5 +1,7 @@
 <?php
 
+namespace Studio321\Entity;
+
 class DefaultEntityClass
 {
     public function __construct($data)

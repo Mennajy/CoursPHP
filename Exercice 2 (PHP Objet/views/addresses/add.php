@@ -1,3 +1,6 @@
+<?php
+use Studio321\Classes\HtmlHelper;
+?>
 <h1>Création d'une adresse</h1>
 
 <?php

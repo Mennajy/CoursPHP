@@ -1,5 +1,9 @@
 <?php
 
+namespace Studio321\Controller;
+
+use Studio321\Controller\DefaultControllerClass;
+
 require_once 'DefaultControllerClass.php';
 
 /**

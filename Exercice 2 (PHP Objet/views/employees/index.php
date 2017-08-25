@@ -1,37 +1,14 @@
-<h1>Liste des employes</h1>
-<?= HtmlHelper::link('employees', 'add', 'Nouveau employe') ?>
+<?php
+use Studio321\Classes\HtmlHelper;
+?>
+<h1>Liste des Employes</h1>
+<?= HtmlHelper::link('employes', 'index', 'Employes') ?>
 <hr>
 <?php
-while($line=mysqli_fetch_assoc($resultats)){
-    var_dump($line);
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-}
 // Les résultats sont disponibles dans la
 // variable $resultats
-if (mysqli_num_rows($resultats) === 0) {
+if (count($resultats) === 0) {
     echo "Pas de résultats";
 } else {
-    echo HtmlHelper::table([
-        'id',
-        'nom',
-        'prenom',
-        'id_adresse',
-        'id_ferme',
-    ], $resultats, 'employees');
+    echo HtmlHelper::table(['id', 'nom', 'prenom', 'id_adresse','id_ferme'], $resultats, 'employes');
 }

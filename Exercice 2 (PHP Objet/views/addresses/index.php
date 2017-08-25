@@ -1,3 +1,6 @@
+<?php
+use Studio321\Classes\HtmlHelper;
+?>
 <h1>Liste des adresses</h1>
 <?= HtmlHelper::link('addresses', 'add', 'Nouvelle adresse') ?>
 <hr>

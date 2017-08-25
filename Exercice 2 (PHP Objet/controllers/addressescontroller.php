@@ -1,5 +1,7 @@
 <?php
-require_once 'DefaultControllerClass.php';
+namespace Studio321\Controller;
+
+use Studio321\Controller\DefaultControllerClass;
 
 class AddressesController extends DefaultControllerClass
 {

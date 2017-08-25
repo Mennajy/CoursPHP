@@ -1,5 +1,7 @@
 <?php
 
+namespace Studio321\Classes;
+
 class HtmlHelper
 {
     /**

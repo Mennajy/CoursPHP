@@ -1,3 +1,6 @@
+<?php
+use Studio321\Classes\HtmlHelper;
+?>
 <!doctype HTML>
 <html>
 <head>
@@ -7,12 +10,13 @@
           integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
     <title></title>
     <style>
-        .navbar-default .navbar-nav>li>a.noClick{
+        .navbar-default .navbar-nav > li > a.noClick {
             color: black;
             cursor: default;
         }
-        .navbar-default .navbar-nav>li>a{
-            padding-right:2px;
+
+        .navbar-default .navbar-nav > li > a {
+            padding-right: 2px;
         }
     </style>
 </head>

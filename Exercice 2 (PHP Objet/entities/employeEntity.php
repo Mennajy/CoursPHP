@@ -10,7 +10,7 @@ use Studio321\Entity\DefaultEntityClass;
  *
  * Entité représentant une adresse
  */
-class AddressEntity extends DefaultEntityClass
+class employesEntity extends DefaultEntityClass
 {
-  
+
 }
